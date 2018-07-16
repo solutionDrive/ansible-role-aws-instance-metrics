@@ -26,9 +26,12 @@ Role Variables
     
     # Configure the path to install scripts to
     aws_instance_metrics_script_path: "/opt"
-
+    
+    # The version of the scripts to install
+    aws_instance_metrics_script_version: "1.2.2"
+    
     # The source URL the scripts will be loaded from
-    aws_instance_metrics_download_url: "https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip"
+    aws_instance_metrics_download_url: "https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-{{ aws_instance_metrics_script_version }}.zip"
 
 
 Dependencies

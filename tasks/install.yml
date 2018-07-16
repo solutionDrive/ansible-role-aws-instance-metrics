@@ -1,12 +1,35 @@
 ---
+- name: Check if scripts have to be installed
+  stat:
+    path: "{{ aws_instance_metrics_script_path }}/aws_metric_scripts_version_{{ aws_instance_metrics_script_version }}"
+  register: installed_script_version_file
+
+
 - name: Download and unarchive scripts release
+  get_url:
+    url: "{{ aws_instance_metrics_download_url }}"
+    dest: /tmp/install_aws_scripts.zip
+    mode: 0440
+  when: installed_script_version_file.stat.exists == False
+
+- name: Unarchive scripts release
   unarchive:
-    src: https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip
+    src: "/tmp/install_aws_scripts.zip"
     dest: "{{ aws_instance_metrics_script_path }}"
     remote_src: yes
+  when: installed_script_version_file.stat.exists == False
+
+- name: Touch version file
+  file:
+    path: "{{ aws_instance_metrics_script_path }}/aws_metric_scripts_version_{{ aws_instance_metrics_script_version }}"
+    state: touch
+    owner: root
+    group: root
+  when: installed_script_version_file.stat.exists == False
 
 - name: Ensure correct file rights on perl script
   file:
     path: "{{ aws_instance_metrics_script_path }}/aws-scripts-mon/mon-put-instance-data.pl"
     state: file
     mode: 0770
+  when: installed_script_version_file.stat.exists == False

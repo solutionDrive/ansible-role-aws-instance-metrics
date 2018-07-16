@@ -4,4 +4,5 @@ aws_instance_metrics_install_scripts: true
 aws_instance_metrics_install_cronjobs: true
 
 aws_instance_metrics_script_path: "/opt"
-aws_instance_metrics_download_url: "https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip"
+aws_instance_metrics_script_version: "1.2.2"
+aws_instance_metrics_download_url: "https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-{{ aws_instance_metrics_script_version }}.zip"
