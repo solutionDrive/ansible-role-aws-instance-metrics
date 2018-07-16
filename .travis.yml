@@ -4,8 +4,6 @@ services: docker
 env:
   - distro: ubuntu1804
   - distro: ubuntu1604
-  - distro: debian9
-  - distro: debian8
 
 
 before_script:
