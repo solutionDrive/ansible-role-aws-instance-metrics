@@ -1,0 +1,6 @@
+---
+- name: Create cronjob
+  cron:
+    name: "Push CloudWatch metrics"
+    minute: "*/5"
+    job: "{{ aws_instance_metrics_script_path }}/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron"

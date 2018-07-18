@@ -1,0 +1,9 @@
+---
+- include: prerequisites.yml
+  when: aws_instance_metrics_install_prerequisites
+
+- include: install.yml
+  when: aws_instance_metrics_install_scripts
+
+- include: cronjobs.yml
+  when: aws_instance_metrics_install_cronjobs

@@ -1,0 +1,9 @@
+---
+- name: Install system prerequisites
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - unzip
+    - libwww-perl
+    - libdatetime-perl
