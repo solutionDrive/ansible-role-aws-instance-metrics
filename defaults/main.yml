@@ -2,6 +2,7 @@
 aws_instance_metrics_install_prerequisites: true
 aws_instance_metrics_install_scripts: true
 aws_instance_metrics_install_cronjobs: true
+aws_instance_metrics_cronjob_mailto: ''
 
 aws_instance_metrics_script_path: "/opt"
 aws_instance_metrics_script_version: "1.2.2"

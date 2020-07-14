@@ -24,6 +24,9 @@ Role Variables
     # Set to true to install the system cronjobs
     aws_instance_metrics_install_cronjobs: true
     
+    # Set a mailto entry for the cronjob (default is '' => no mailto entry)
+    aws_instance_metrics_cronjob_mailto: ''
+    
     # Configure the path to install scripts to
     aws_instance_metrics_script_path: "/opt"
     

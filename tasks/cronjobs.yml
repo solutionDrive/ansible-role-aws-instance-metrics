@@ -1,4 +1,10 @@
 ---
+- name: Create mailto entry
+  cronvar:
+    name: MAILTO
+    value: "{{ aws_instance_metrics_cronjob_mailto }}"
+  when: aws_instance_metrics_cronjob_mailto | default('', true) | trim != ''
+
 - name: Create cronjob
   cron:
     name: "Push CloudWatch metrics"
